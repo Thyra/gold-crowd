@@ -44,6 +44,6 @@ with open('data/noble-coder-output/RESULTS.tsv', 'rb') as nc_file:
       ann_offsets.append(start + ' ' + str(end))
     with open('data/brat-input/'+filename, 'a') as ann_file: #@TODO performance -don't reopen file for every single line
       unique_ann_id = 'TF' + ann_id+'.'+ann_offsets[0].split(' ')[0]
-      ann_file.write(unique_ann_id + "\tFunction " + ';'.join(ann_offsets) + "\t" + ''.join(ann_names)+"\n")
+      ann_file.write(unique_ann_id + "\tFunction " + ';'.join(ann_offsets) + "\t" + ' '.join(ann_names)+"\n")
     #@TODO filter out duplicates(maybe by offset?)
 
