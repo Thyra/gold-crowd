@@ -1,6 +1,7 @@
 import requests
 import csv
 import os
+import glob
 from bs4 import BeautifulSoup
 # Download GNormPlus results for each PMID and extract abstract and gene annotations
 with open('data/pmid_list.txt') as pmid_list:
@@ -29,11 +30,13 @@ with open('data/pmid_list.txt') as pmid_list:
 # Run Noble-Coder on the abstracts
 os.system("java -jar 3rd-party-tools/NobleCoder-1.0.jar -terminology go -input data/abstracts/ -output data/noble-coder-output/ -search 'precise-match'")
 
-# Append results from Noble-Coder to .ann files
+# Append results from Noble-Coder to .ann files, save number of functions for later
+function_counts = {} # pmid->n_functions
 with open('data/noble-coder-output/RESULTS.tsv', 'rb') as nc_file:
   csv_reader = csv.DictReader(nc_file, delimiter="\t")
   for line in csv_reader:
-    filename = line["Document"].split('.')[0] + '.ann'
+    pmid = line["Document"].split('.')[0]
+    filename = pmid + '.ann'
     ann_id = line["Code"][3:]
     ann_names = []
     ann_offsets = []
@@ -46,4 +49,20 @@ with open('data/noble-coder-output/RESULTS.tsv', 'rb') as nc_file:
       unique_ann_id = 'TF' + ann_id+'.'+ann_offsets[0].split(' ')[0]
       ann_file.write(unique_ann_id + "\tFunction " + ';'.join(ann_offsets) + "\t" + ' '.join(ann_names)+"\n")
     #@TODO filter out duplicates(maybe by offset?)
+    if pmid in function_counts:
+      function_counts[pmid] += 1
+    else:
+      function_counts[pmid] = 1
 
+# Create statistics file
+with open('data/statistics.tsv', 'wb') as statistics_file:
+  csv_writer = csv.writer(statistics_file, delimiter="\t")
+  csv_writer.writerow(['pmid', 'genes', 'functions', 'words'])
+  for abstract_file in glob.glob('data/abstracts/*.txt'):
+    print(abstract_file)
+    pmid = os.path.split(abstract_file)[1].split('.')[0]
+    print(pmid)
+    with open(abstract_file) as fp:
+      words = len(fp.read().split())
+    genes = len(BeautifulSoup(open('data/gnormplus-output/'+pmid+'.xml'), 'lxml-xml').find_all('annotation'))
+    csv_writer.writerow([pmid, genes, function_counts[pmid], words])
