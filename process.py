@@ -31,13 +31,18 @@ with open('data/pmid_list.txt') as pmid_list:
 os.system("java -jar tools/NobleCoder-1.0.jar -terminology go -input data/abstracts/ -output data/noble-coder-output/ -search 'precise-match'")
 
 # Append results from Noble-Coder to .ann files, save number of functions for later
+# Skip obsolete GO terms
 function_counts = {} # pmid->n_functions
+with open('resources/obsolete_go_terms.txt') as f:
+  obsolete_terms = f.read().split("\n")
 with open('data/noble-coder-output/RESULTS.tsv', 'rb') as nc_file:
   csv_reader = csv.DictReader(nc_file, delimiter="\t")
   for line in csv_reader:
     pmid = line["Document"].split('.')[0]
     filename = pmid + '.ann'
     ann_id = line["Code"][3:]
+    if 'GO:'+ann_id in obsolete_terms:
+      continue
     ann_names = []
     ann_offsets = []
     for a in line["Annotations"].split(', '):
