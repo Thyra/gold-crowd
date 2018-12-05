@@ -28,7 +28,7 @@ with open('data/pmid_list.txt') as pmid_list:
 
 
 # Run Noble-Coder on the abstracts
-os.system("java -jar 3rd-party-tools/NobleCoder-1.0.jar -terminology go -input data/abstracts/ -output data/noble-coder-output/ -search 'precise-match'")
+os.system("java -jar tools/NobleCoder-1.0.jar -terminology go -input data/abstracts/ -output data/noble-coder-output/ -search 'precise-match'")
 
 # Append results from Noble-Coder to .ann files, save number of functions for later
 function_counts = {} # pmid->n_functions
