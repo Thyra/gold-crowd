@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="custom.css">
+
+    <script src="custom.js"></script>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <main role="main" class="container">
+
+      <div class="main">
+        <h1>Hello!</h1>
+        <p class="lead">Lalala some explanation, introduction. Maybe also some vidoes or whatever</p>
+
+        <div class="alert alert-primary shadow" role="alert">
+          <h4 class="alert-heading">Timing</h4>
+          <p>
+          We will measure the time you take to annotate each abstract. <span style="font-weight: bold; text-decoration: underline">This will not affect whether or how much you will be paid.</span> We simply want to understand how the length of the abstract and the number of genes and functions it contains affect the time turkers need for review.</br>
+          In order not to falsify the time measurement, please take a break now if you need to and make all preparations you (e.g. get something to drink or some snacks). You will also be able to take a break after each abstract. Thank you! :-)
+          </p>
+        </div>
+
+        <div class="card shadow">
+          <div class="card-header">Abstract 1<span style="float: right" id="abstract-1-time">00:00</span></div>
+          <div id="abstract-1" class="collapse show card-body">
+            <p>
+            <ol>
+              <li>Please make sure you can review the next abstract without interruption. Better take a break now if you need one.</li>
+              <li>Open the abstract and annotate it. This will start the timer. <a href="http://brat.delta-psi.net/index.xhtml#/gold-crowd/30396406" target="_blank" onclick="click_abstract_link(1)">Link</a></li>
+              <li>Take a last look over the abstract. Is everything as you think it should be?</li>
+              <li>Close the tab containing the abstract</li>
+              <li>Click: <button type="button" id="abstract-1-done" class="btn btn-success" onclick="click_abstract_done(1)" disabled>Done</button></li>
+            </ol>
+            </p>
+          </div>
+        </div>
+
+        <div class="card shadow">
+          <div class="card-header">Abstract 2<span style="float: right" id="abstract-2-time">00:00</span></div>
+          <div id="abstract-2" class="collapse card-body">
+            <p>
+            <ol>
+              <li>Please make sure you can review the next abstract without interruption. Better take a break now if you need one.</li>
+              <li>Open the abstract and annotate it. This will start the timer. <a href="http://brat.delta-psi.net/index.xhtml#/gold-crowd/30397057" target="_blank" onclick="click_abstract_link(2)">Link</a></li>
+              <li>Take a last look over the abstract. Is everything as you think it should be?</li>
+              <li>Close the tab containing the abstract</li>
+              <li>Click: <button type="button" id="abstract-2-done" class="btn btn-success" onclick="click_abstract_done(2)" disabled>Done</button></li>
+            </ol>
+            </p>
+          </div>
+        </div>
+
+        <div class="card shadow">
+          <div class="card-header">Abstract 3<span style="float: right" id="abstract-3-time">00:00</span></div>
+          <div id="abstract-3" class="collapse card-body">
+            <p>
+            <ol>
+              <li>Please make sure you can review the next abstract without interruption. Better take a break now if you need one.</li>
+              <li>Open the abstract and annotate it. This will start the timer. <a href="http://brat.delta-psi.net/index.xhtml#/gold-crowd/30397105" target="_blank" onclick="click_abstract_link(3)">Link</a></li>
+              <li>Take a last look over the abstract. Is everything as you think it should be?</li>
+              <li>Close the tab containing the abstract</li>
+              <li>Click: <button type="button" id="abstract-3-done" class="btn btn-success" onclick="click_abstract_done(3)" disabled>Done</button></li>
+            </ol>
+            </p>
+          </div>
+        </div>
+
+        <div class="card shadow">
+          <div class="card-header">All done!</div>
+          <div id="abstract-4" class="collapse card-body">
+            <p>
+            <lead>Thank you for participating!</lead></br>
+            Please paste the following code back at Amazon: <strong>1223453</strong><br>
+            Then you can close this tab.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </main><!-- /.container -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
