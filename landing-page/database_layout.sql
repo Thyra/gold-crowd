@@ -3,6 +3,7 @@ CREATE TABLE turkers(
   turker_id TEXT UNIQUE DEFAULT NULL, -- id on amazon platform
   password TEXT, -- not encrypted
   datetime_connected INTEGER DEFAULT NULL -- when was this internal user connected to a turker? unix timestamp
+  -- @TODO code to paste back to Amazon
 );
 
 CREATE TABLE abstracts(
